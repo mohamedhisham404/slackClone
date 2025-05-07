@@ -3,10 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import {
-  CreateChannelMessageDto,
-  CreateDMMessageDTO,
-} from './dto/create-message.dto';
+import { CreateChannelMessageDTO } from './dto/create-channel-message.dto';
 import { Request } from 'express';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Message } from './entities/message.entity';
@@ -20,6 +17,7 @@ import { UpdateMessageDto } from './dto/update-message.dto';
 import { handleError } from 'src/utils/errorHandling';
 import { CustomSocket } from 'src/events/types/socket.interface';
 import { ChannelRole } from 'src/channels/enums/channel-role.enum';
+import { CreateUserMessageDTO } from './dto/create-user-message.dto';
 
 @Injectable()
 export class MessageService {
@@ -42,7 +40,7 @@ export class MessageService {
   ) {}
 
   async createChannelMessage(
-    CreateChannelMessageDto: CreateChannelMessageDto,
+    CreateChannelMessageDto: CreateChannelMessageDTO,
     req: Request,
   ) {
     try {
@@ -119,7 +117,7 @@ export class MessageService {
   }
 
   async createUserMessage(
-    CreateDMMessageDTO: CreateDMMessageDTO,
+    CreateUserMessageDTO: CreateUserMessageDTO,
     req: Request,
   ) {
     try {
@@ -129,7 +127,7 @@ export class MessageService {
         parent_message_id,
         is_pinned,
         attachments,
-      } = CreateDMMessageDTO;
+      } = CreateUserMessageDTO;
       const userId = req.user.userId;
 
       if (!content && !attachments) {
