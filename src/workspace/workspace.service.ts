@@ -8,17 +8,16 @@ import { UpdateWorkspaceDto } from './dto/update-workspace.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Workspace } from './entities/workspace.entity';
 import { In, Repository } from 'typeorm';
-import { UserWorkspace, workspaceRole } from './entities/user-workspace.entity';
+import { UserWorkspace } from './entities/user-workspace.entity';
 import { Request } from 'express';
 import { Channels } from 'src/channels/entities/channel.entity';
-import {
-  ChannelRole,
-  UserChannel,
-} from 'src/channels/entities/user-channel.entity';
+import { UserChannel } from 'src/channels/entities/user-channel.entity';
 import { AddUserDto } from './dto/add-user.dto';
 import { User } from 'src/user/entities/user.entity';
 import { handleError } from 'src/utils/errorHandling';
 import { NotificationWorkspace } from 'src/notification-workspace/entities/notification-workspace.entity';
+import { ChannelRole } from 'src/channels/enums/channel-role.enum';
+import { workspaceRole } from './enums/workspace-role.enum';
 
 @Injectable()
 export class WorkspaceService {

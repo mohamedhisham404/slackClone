@@ -14,14 +14,12 @@ import { Repository } from 'typeorm';
 import { Channels } from 'src/channels/entities/channel.entity';
 import { ChannelsService } from 'src/channels/channels.service';
 import { EventsGateway } from 'src/events/events.gateway';
-import {
-  ChannelRole,
-  UserChannel,
-} from 'src/channels/entities/user-channel.entity';
+import { UserChannel } from 'src/channels/entities/user-channel.entity';
 import { User } from 'src/user/entities/user.entity';
 import { UpdateMessageDto } from './dto/update-message.dto';
 import { handleError } from 'src/utils/errorHandling';
 import { CustomSocket } from 'src/events/types/socket.interface';
+import { ChannelRole } from 'src/channels/enums/channel-role.enum';
 
 @Injectable()
 export class MessageService {

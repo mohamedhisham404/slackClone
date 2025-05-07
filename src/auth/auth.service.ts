@@ -15,17 +15,13 @@ import { Request, Response } from 'express';
 import { JwtPayload } from '../types/jwt-payload.interface';
 import { handleError } from 'src/utils/errorHandling';
 import { UserPreferences } from 'src/user-preferences/entities/user-preference.entity';
-import {
-  UserWorkspace,
-  workspaceRole,
-} from 'src/workspace/entities/user-workspace.entity';
+import { UserWorkspace } from 'src/workspace/entities/user-workspace.entity';
 import { Channels } from 'src/channels/entities/channel.entity';
-import {
-  ChannelRole,
-  UserChannel,
-} from 'src/channels/entities/user-channel.entity';
+import { UserChannel } from 'src/channels/entities/user-channel.entity';
 import { isMobile } from 'src/utils/isMobile';
 import { ConfigService } from '@nestjs/config';
+import { ChannelRole } from 'src/channels/enums/channel-role.enum';
+import { workspaceRole } from 'src/workspace/enums/workspace-role.enum';
 
 @Injectable()
 export class AuthService {
