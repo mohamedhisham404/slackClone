@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user.module';
@@ -14,7 +12,7 @@ import { NotificationWorkspaceModule } from './notification-workspace/notificati
 import { AuthModule } from './auth/auth.module';
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { EventsModule } from './events/events.module';
-import config from './config/config';
+import config from './config/JWT.config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 
@@ -49,9 +47,8 @@ import { APP_GUARD } from '@nestjs/core';
       ],
     }),
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
-    AppService,
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
